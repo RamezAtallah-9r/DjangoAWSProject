@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Tailwind App</title>
+</head>
+<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+    <header class="bg-white border-b border-gray-200 p-4">
+    </header>
+
+    <main class="flex-grow container mx-auto p-4">
+        <section>
+            <h2>Game Name : {{game.game_name}}</h2>
+            <h2>Game Genre : {{game.genre}}</h2>
+            <h2>Game Description : {{game.description}}</h2>
+            <h2>Game Creator : {{game.user.first_name}} {{game.user.last_name}}</h2>
+            <div>
+                <a href="{% url 'DjangoApp:edite_game_info' game.id %}">edite</a>
+                <a href="">delete</a>
+            </div>
+
+        </section>
+        <section>
+            <table class="w-full text-left">
+            
+                <caption class="caption-top text-lg font-semibold p-4 border-b">
+                    Players who likes this game the most
+                </caption>
+            
+                <!-- Header -->
+                <thead class="bg-gray-200 text-gray-700 uppercase text-sm">
+                    <tr>
+                        <th class="px-4 py-3">ID</th>
+                        <th class="px-4 py-3">player name</th>
+                        <th class="px-4 py-3">rate</th>
+                    </tr>
+                </thead>
+            
+                <!-- Body -->
+                <tbody class="divide-y divide-gray-200">
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-4 py-3"></td>
+                        <td class="px-4 py-3"></td>
+                        <td class="px-4 py-3"></td>
+                    </tr>
+                </tbody>
+            
+                <!-- Footer -->
+                <tfoot class="bg-gray-50">
+                    <tr>
+                        <td colspan="4" class="px-4 py-3 text-sm text-gray-600">
+                            Total records shown here: {{ games.count }}
+                        </td>
+                    </tr>
+                </tfoot>
+            
+            </table>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 p-4 text-center text-sm text-gray-600">
+        <p>&copy; 2026 Your Company. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Tailwind App</title>
+</head>
+<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+    <header class="bg-white border-b border-gray-200 p-4">
+    </header>
+
+    <main class="flex-grow container mx-auto p-4 flex justify-center items-center">
+        <form action="{% url 'DjangoApp:edite_game' %}" method="post" class=" rounded-xl bg-slate-50 shadow-xl shadow-gray-500 border-2 p-4 w-1/3">
+            {% csrf_token %}
+            <input type="hidden" name="game_id" value="{{game.id}}">
+            <div>
+                <label for="name">Game Name</label>
+                <input type="text" name="name" class="w-full rounded-lg p-1 border-2 border-cyan-700" value="{{game.game_name}}">
+            </div>
+            <div>
+                <label for="genre">genre</label>
+                <select name="genre" class="w-full rounded-lg p-1 border-2 border-cyan-700">
+                    <option value="Action">Action</option>
+                    <option value="Survival">Survival</option>
+                    <option value="Adventure">Adventure</option>Simulation
+                    <option value="Puzzle">Puzzle</option>
+                    <option value="Simulation">Simulation</option>
+                </select>
+            </div>
+            <div>
+                <label for="release_date">Release Date</label>
+                <input type="date" name="release_date" class="w-full rounded-lg p-1 border-2 border-cyan-700" value="{{game.release_date}}">
+            </div>
+            <div>
+                <label for="description">Game description</label>
+                <textarea name="description" class="w-full rounded-lg p-1 border-2 border-cyan-700">{{game.description}}</textarea>
+            </div>
+            <div class="w-full flex justify-center p-2">
+                <button type="submit" class="shadow-xl p-2 bg-gray-100 rounded-lg border-2 border-gray-300">
+                    Edite Game</button>
+            </div>
+        </form>
+        
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 p-4 text-center text-sm text-gray-600">
+        <p>&copy; 2026 Your Company. All rights reserved.</p>
+    </footer>
+</body>
+</html>
